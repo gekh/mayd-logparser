@@ -1,7 +1,7 @@
 {
     "name": "parser",
     "version": "1.0.0",
-    "description": "Extracts errors from log file and converts them into a json formst.",
+    "description": "Extracts errors from log file and converts them into a json format.",
     "author": "German Khokhlov",
     "license": "ISC",
     "scripts": {
