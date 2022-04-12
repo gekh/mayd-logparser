@@ -11,6 +11,8 @@ npm install
 npm run build
 
 node parser.js --input ./app.log --output ./errors.json
+
+cat errors.json
 ```
 
 Testing:
