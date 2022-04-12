@@ -31,12 +31,12 @@ export default class Parser {
         this.outputFileStream = fs.createWriteStream(this.args.output);
     }
 
-    protected writeToFile(parsedLines: Array<ILogLine>): void {
+    protected writeToFile(parsedLines: Array<IErrorLogLine>): void {
         this.outputFileStream.write(JSON.stringify(parsedLines));
     }
 
-    protected async lineByLineProcessing(): Promise<Array<ILogLine>> {
-        let parsedLines: Array<ILogLine> = Array();
+    protected async lineByLineProcessing(): Promise<Array<IErrorLogLine>> {
+        let parsedLines: Array<IErrorLogLine> = Array();
 
         for await (const line of this.inputReadByLine) {
             if (this.isErrorLevel(line)) {
@@ -57,7 +57,7 @@ export default class Parser {
      * @param line string like 2021-08-09T02:12:51.259Z - error - {"transactionId":"9abc55b2-807b-4361-9dbe-aa88b1b2e978","details":"Cannot find user orders list","code": 404,"err":"Not found"}
      * @returns [{"timestamp": <Epoch Unix Timestamp>, "logLevel": "<logLevel>", "transactionId: "<UUID>", "err": "<Error message>" }]
      */
-    protected parseLine(line: string): ILogLine {
+    protected parseLine(line: string): IErrorLogLine {
         const parsedLine: RegExpMatchArray | null = line.match(this.logLineRegExp());
 
         const dateTime: string = parsedLine?.groups?.dateTime ?? '';
@@ -95,7 +95,10 @@ export default class Parser {
 
 }
 
-interface ILogLine extends Object {
+/**
+ * Interface for a parsed error log line.
+ */
+interface IErrorLogLine extends Object {
     timestamp: number;
     logLevel: string;
     transactionId: string;
