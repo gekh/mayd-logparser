@@ -14,12 +14,12 @@ export default class Args {
     }
 
     private init() {
-        const args = minimist(process.argv.slice(2));
+        const args: { [key: string]: string } = minimist(process.argv.slice(2));
 
         if (!args.input) {
             throw new Error('There should be an input argument.');
         }
-        
+
         if (!args.output) {
             throw new Error('There should be an output argument.');
         }
