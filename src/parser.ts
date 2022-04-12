@@ -28,7 +28,7 @@ export default class Parser {
     }
 
     protected writeToFile(parsedLines: Array<ILogLine>): void {
-        console.log(JSON.stringify(parsedLines))
+        this.outputFileStream.write(JSON.stringify(parsedLines));
     }
 
     protected async lineByLineProcessing(): Promise<Array<ILogLine>> {
