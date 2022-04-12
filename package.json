@@ -1,11 +1,17 @@
 {
-  "scripts": {
-    "build": "tsc -p tsconfig.json"
-  },
-  "dependencies": {
-    "minimist": "^1.2.6"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.23"
-  }
+    "name": "parser",
+    "version": "1.0.0",
+    "description": "Extracts errors from log file and converts them into a json formst.",
+    "author": "German Khokhlov",
+    "license": "ISC",
+    "scripts": {
+        "build": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "minimist": "^1.2.6"
+    },
+    "devDependencies": {
+        "@types/minimist": "^1.2.2",
+        "@types/node": "^17.0.23"
+    }
 }
